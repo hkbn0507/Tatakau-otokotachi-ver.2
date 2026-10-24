@@ -1,0 +1,1771 @@
+* {
+  box-sizing: border-box;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #090b10;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+button {
+  font-family: inherit;
+  touch-action: manipulation;
+}
+
+#game {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: #0d1017;
+}
+
+.screen {
+  display: none;
+  width: 100%;
+  height: 100%;
+}
+
+.screen.active {
+  display: flex;
+}
+
+
+/* HOME */
+
+#homeScreen {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(circle at 50% 30%, #26364c 0%, #111722 38%, #090b10 75%);
+}
+
+.home-logo {
+  margin-bottom: 40px;
+  text-align: center;
+  color: white;
+}
+
+.logo-small {
+  font-size: 13px;
+  letter-spacing: 7px;
+  opacity: .55;
+}
+
+.home-logo h1 {
+  margin: 8px 0;
+  font-size: clamp(50px, 8vw, 95px);
+  font-style: italic;
+  letter-spacing: 4px;
+}
+
+.logo-line,
+.title-line {
+  width: 80px;
+  height: 5px;
+  margin: auto;
+  background: white;
+}
+
+.main-menu {
+  width: min(460px, 70vw);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.menu-button {
+  height: 76px;
+  border: 1px solid #56606d;
+  border-radius: 5px;
+  background: rgba(30, 36, 47, .9);
+  color: white;
+  font-size: 23px;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+.menu-button span {
+  display: block;
+  margin-top: 3px;
+  font-size: 11px;
+  font-weight: normal;
+  opacity: .55;
+}
+
+.menu-button.main {
+  background: white;
+  color: #10131a;
+  transform: scale(1.04);
+}
+
+.menu-button:active {
+  transform: scale(.97);
+}
+
+.version {
+  position: absolute;
+  right: 20px;
+  bottom: 15px;
+  color: #666;
+  font-size: 11px;
+}
+
+
+/* SELECT SCREENS */
+
+#modeScreen,
+#selectScreen,
+#cpuSelectScreen,
+#difficultyScreen {
+  flex-direction: column;
+  align-items: center;
+  padding-top: 65px;
+  color: white;
+  background: linear-gradient(135deg, #121722, #090b10);
+}
+
+.back-button {
+  position: absolute;
+  left: 25px;
+  top: 25px;
+  border: 0;
+  background: transparent;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.screen-title {
+  margin: 0;
+  font-size: 36px;
+  font-style: italic;
+  letter-spacing: 2px;
+}
+
+.select-subtitle {
+  margin-top: 4px;
+  font-size: 10px;
+  letter-spacing: 4px;
+  opacity: .45;
+}
+
+.title-line {
+  margin-top: 10px;
+  margin-bottom: 25px;
+}
+
+
+/* MODE */
+
+.mode-container {
+  width: min(650px, 80vw);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.mode-card {
+  position: relative;
+  min-height: 100px;
+  padding: 15px 25px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border: 2px solid #444d5c;
+  border-radius: 7px;
+  background: #181e29;
+  color: white;
+  text-align: left;
+}
+
+.mode-card:active {
+  transform: scale(.98);
+}
+
+.mode-icon {
+  width: 70px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #697587;
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.mode-card strong {
+  display: block;
+  font-size: 24px;
+}
+
+.mode-card span {
+  display: block;
+  margin-top: 5px;
+  opacity: .6;
+}
+
+.soon {
+  position: absolute;
+  right: 20px;
+  top: 12px;
+  font-size: 10px;
+  opacity: .5;
+}
+
+
+/* FIGHTER SELECT */
+
+.fighter-cards {
+  width: 98%;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.fighter-card {
+  width: 125px;
+  padding: 8px;
+  border: 3px solid #414957;
+  border-radius: 8px;
+  background: #171c25;
+  color: white;
+  text-align: center;
+  box-shadow: 0 12px 35px #000;
+  transition: .15s;
+}
+
+.fighter-card.selected {
+  border-color: white;
+  transform: translateY(-6px);
+}
+
+.portrait {
+  position: relative;
+  height: 115px;
+  overflow: hidden;
+  background: radial-gradient(circle, #35465d, #111722);
+}
+
+.okazaki-portrait {
+  background: radial-gradient(circle, #51462e, #15130e);
+}
+
+.yamada-portrait {
+  background: radial-gradient(circle, #5c1e2b, #16090c);
+}
+
+.sakurai-portrait {
+  background: radial-gradient(circle, #284b67, #0b1520);
+}
+
+.sato-portrait {
+  background: radial-gradient(circle, #435463, #10151c);
+}
+
+.tani-portrait {
+  background: radial-gradient(circle, #633c31, #160d0a);
+}
+
+.abe-portrait {
+  background: radial-gradient(circle, #49345c, #100b15);
+}
+
+.mini-head {
+  position: absolute;
+  left: 50%;
+  top: 25px;
+  transform: translateX(-50%);
+  width: 47px;
+  height: 47px;
+  border-radius: 50%;
+  background: #e7b081;
+  border: 3px solid #0a0a0a;
+}
+
+.mini-body {
+  position: absolute;
+  left: 50%;
+  top: 69px;
+  transform: translateX(-50%);
+  width: 70px;
+  height: 100px;
+  border-radius: 12px 12px 0 0;
+  border: 3px solid #0a0a0a;
+  background: #287cff;
+}
+
+.okazaki-portrait .mini-body {
+  background: #d59a26;
+}
+
+.yamada-portrait .mini-body {
+  background: #762b3c;
+}
+
+.sakurai-portrait .mini-body {
+  background: #287cff;
+}
+
+.sato-portrait .mini-body {
+  background: #586a78;
+}
+
+.tani-portrait .mini-body {
+  background: #8b392e;
+}
+
+.abe-portrait .mini-body {
+  background: #27232d;
+}
+
+/* 安倍 選択画面の黒マスク */
+
+.abe-portrait .mini-head::after {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 24px;
+  width: 37px;
+  height: 17px;
+  border-radius: 3px 3px 12px 12px;
+  background: #080808;
+  border: 2px solid #000;
+}
+
+.fighter-card-name {
+  display: block;
+  margin-top: 8px;
+  font-size: 21px;
+}
+
+.detail-button {
+  width: 100%;
+  height: 33px;
+  margin-top: 7px;
+  border: 1px solid #697587;
+  border-radius: 5px;
+  background: #252b35;
+  color: white;
+  font-weight: bold;
+}
+
+#selectedCharacterText,
+#selectedCpuText,
+#difficultyText {
+  margin-top: 14px;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  opacity: .7;
+}
+
+.next-button {
+  width: min(300px, 50vw);
+  height: 55px;
+  margin-top: 11px;
+  border: 0;
+  border-radius: 4px;
+  background: white;
+  color: #111;
+  font-size: 22px;
+  font-weight: 900;
+  font-style: italic;
+}
+
+
+/* DIFFICULTY */
+
+#difficultyCards {
+  width: min(760px, 92vw);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.difficulty-card {
+  position: relative;
+  min-height: 100px;
+  padding: 13px 18px;
+  border: 2px solid #3e4652;
+  border-radius: 7px;
+  background: #171c25;
+  color: white;
+  text-align: left;
+}
+
+.difficulty-card.selected {
+  border-color: white;
+  background: #252c38;
+}
+
+.difficulty-card strong {
+  font-size: 30px;
+}
+
+.difficulty-card span {
+  margin-left: 8px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  opacity: .5;
+}
+
+.difficulty-card p {
+  margin: 5px 0 0;
+  font-size: 11px;
+  line-height: 1.4;
+  opacity: .65;
+}
+
+.difficulty-card.oni {
+  border-color: #6e2525;
+}
+
+.difficulty-card.oni.selected {
+  border-color: #ff4141;
+  box-shadow: 0 0 18px rgba(255, 0, 0, .35);
+}
+
+
+/* HUD */
+
+#battleScreen {
+  flex-direction: column;
+}
+
+#hud {
+  height: 13vh;
+  min-height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 10px 25px;
+  background: #0b0d12;
+  color: white;
+}
+
+.fighter-info {
+  width: 40%;
+}
+
+.enemy-info {
+  text-align: right;
+}
+
+.name {
+  margin-bottom: 4px;
+  font-weight: 900;
+}
+
+.hp-frame {
+  width: 100%;
+  height: 22px;
+  overflow: hidden;
+  background: #391c1c;
+  border: 3px solid white;
+}
+
+.hp {
+  width: 100%;
+  height: 100%;
+  background: #42dc60;
+  transition: width .12s;
+}
+
+.gauge-frame {
+  height: 9px;
+  margin-top: 5px;
+  overflow: hidden;
+  background: #202020;
+  border: 1px solid #666;
+}
+
+.gauge {
+  width: 0%;
+  height: 100%;
+  background: #f2c438;
+  transition: width .15s;
+}
+
+
+/* 岡崎 極ゲージ */
+
+.extreme-frame {
+  display: none;
+  position: relative;
+  height: 8px;
+  margin-top: 3px;
+  overflow: hidden;
+  border: 1px solid #ff86d8;
+  background: #311329;
+  box-shadow: 0 0 5px rgba(255, 55, 190, .35);
+}
+
+.extreme-frame.active {
+  display: block;
+}
+
+.extreme-gauge {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #ff38b8, #ff82d9, #fff);
+  box-shadow: 0 0 7px #ff3dbd, 0 0 12px #ff3dbd;
+  transition: width .15s;
+}
+
+.extreme-frame.full {
+  animation: extremeGaugeFull .45s infinite alternate;
+}
+
+@keyframes extremeGaugeFull {
+  from {
+    box-shadow: 0 0 4px #ff42bd;
+  }
+
+  to {
+    box-shadow: 0 0 14px #fff, 0 0 25px #ff1fac;
+  }
+}
+
+#timer {
+  font-size: 36px;
+  font-weight: 900;
+}
+
+
+/* ARENA */
+
+#arena {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+  background:
+    linear-gradient(
+      to bottom,
+      #152944 0%,
+      #315a7d 59%,
+      #bd7547 60%,
+      #714025 100%
+    );
+  border-bottom: 5px solid #080808;
+}
+
+#arena::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 14px;
+  background: #1b1b1b;
+  z-index: 1;
+}
+
+
+/* FIGHTERS */
+
+.fighter {
+  position: absolute;
+  left: 140px;
+  bottom: 14px;
+  width: 72px;
+  height: 150px;
+  transform-origin: center bottom;
+  z-index: 5;
+}
+
+.enemy {
+  left: 650px;
+}
+
+.head {
+  position: absolute;
+  left: 15px;
+  top: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #e7b081;
+  border: 3px solid #111;
+  z-index: 8;
+  transition: .12s;
+}
+
+.body {
+  position: absolute;
+  left: 13px;
+  top: 40px;
+  width: 46px;
+  height: 65px;
+  border-radius: 8px;
+  background: #287cff;
+  border: 3px solid #111;
+  z-index: 7;
+  transition: .12s;
+}
+
+.fighter.okazaki .body {
+  background: #d59a26;
+}
+
+.fighter.yamada .body {
+  background: #762b3c;
+}
+
+.fighter.sakurai .body {
+  background: #287cff;
+}
+
+.fighter.sato .body {
+  background: #586a78;
+}
+
+.fighter.tani .body {
+  background: #8b392e;
+}
+
+/* 安倍の黒パーカー */
+
+.fighter.abe .body {
+  background: #27232d;
+  box-shadow: inset 0 0 15px #121015;
+}
+
+/* 安倍の黒マスク */
+
+.fighter.abe .head::after {
+  content: "";
+  position: absolute;
+  left: 1px;
+  top: 21px;
+  width: 34px;
+  height: 16px;
+  border-radius: 3px 3px 12px 12px;
+  background: #050505;
+  border: 2px solid #000;
+  z-index: 20;
+}
+
+.arm {
+  position: absolute;
+  top: 43px;
+  width: 18px;
+  height: 64px;
+  border-radius: 10px;
+  background: #e7b081;
+  border: 3px solid #111;
+  transform-origin: top center;
+  z-index: 6;
+}
+
+.arm-left {
+  left: 3px;
+  transform: rotate(12deg);
+}
+
+.arm-right {
+  right: 3px;
+  transform: rotate(-15deg);
+}
+
+.leg {
+  position: absolute;
+  top: 98px;
+  width: 20px;
+  height: 55px;
+  border-radius: 8px;
+  background: #20242b;
+  border: 3px solid #111;
+  transform-origin: top center;
+  z-index: 6;
+}
+
+.leg-left {
+  left: 14px;
+  transform: rotate(5deg);
+}
+
+.leg-right {
+  right: 13px;
+  transform: rotate(-5deg);
+}
+
+
+/* GUARD / DAMAGE */
+
+.guarding {
+  filter: brightness(.65);
+}
+
+.hurt {
+  animation: hurt .18s linear;
+}
+
+@keyframes hurt {
+  0%,
+  70% {
+    filter: brightness(4);
+  }
+
+  100% {
+    filter: brightness(1);
+  }
+}
+
+
+/* 安倍 毒 */
+
+.poison-effect {
+  display: none;
+}
+
+.fighter.poisoned .poison-effect {
+  display: block;
+  position: absolute;
+  left: -15px;
+  top: -20px;
+  width: 102px;
+  height: 180px;
+  z-index: 25;
+  pointer-events: none;
+  border-radius: 45%;
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(190, 55, 255, .20),
+      rgba(105, 0, 170, .15) 45%,
+      transparent 72%
+    );
+  box-shadow:
+    0 0 15px rgba(185, 55, 255, .6),
+    inset 0 0 22px rgba(150, 20, 230, .25);
+  animation: poisonAuraPulse .65s infinite alternate;
+}
+
+.fighter.poisoned .poison-effect span {
+  position: absolute;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #c65cff;
+  box-shadow:
+    0 0 7px #e6a2ff,
+    0 0 14px #8d00d7;
+  animation: poisonBubble 1.5s infinite ease-out;
+}
+
+.fighter.poisoned .poison-effect span:nth-child(1) {
+  left: 7px;
+  bottom: 15px;
+}
+
+.fighter.poisoned .poison-effect span:nth-child(2) {
+  left: 67px;
+  bottom: 27px;
+  animation-delay: .25s;
+}
+
+.fighter.poisoned .poison-effect span:nth-child(3) {
+  left: 28px;
+  bottom: 55px;
+  width: 9px;
+  height: 9px;
+  animation-delay: .5s;
+}
+
+.fighter.poisoned .poison-effect span:nth-child(4) {
+  left: 79px;
+  bottom: 68px;
+  width: 10px;
+  height: 10px;
+  animation-delay: .8s;
+}
+
+.fighter.poisoned .poison-effect span:nth-child(5) {
+  left: 45px;
+  bottom: 10px;
+  width: 8px;
+  height: 8px;
+  animation-delay: 1s;
+}
+
+@keyframes poisonAuraPulse {
+  from {
+    opacity: .55;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes poisonBubble {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(.6);
+  }
+
+  25% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-115px) scale(1.3);
+  }
+}
+
+
+/* HEADBUTT */
+
+.fighter.headbutt-windup .head {
+  width: 82px;
+  height: 82px;
+  left: -5px;
+  top: -25px;
+}
+
+.fighter.headbutt-strike .head {
+  width: 82px;
+  height: 82px;
+  left: 48px;
+  top: 35px;
+  transform: rotate(35deg);
+}
+
+.fighter.headbutt-strike .body {
+  transform: rotate(28deg);
+}
+
+
+/* 谷 */
+
+.fighter.uppercut-windup .body {
+  transform: translateY(8px);
+}
+
+.fighter.uppercut-windup .arm-right {
+  transform: rotate(20deg) translateY(8px);
+}
+
+.fighter.uppercut-strike .body {
+  transform: translateY(-10px);
+}
+
+.fighter.uppercut-strike .arm-right {
+  transform: rotate(-165deg) translateY(-12px);
+}
+
+.fighter.uppercut-strike .head {
+  transform: translateY(-7px);
+}
+
+.fighter.uppercut-launched {
+  transition: none;
+}
+
+.fighter.knocked-down {
+  transform-origin: center center !important;
+}
+
+#player.knocked-down {
+  transform: rotate(90deg) !important;
+}
+
+#enemy.knocked-down {
+  transform: rotate(-90deg) !important;
+}
+
+.fighter.knocked-down .body {
+  filter: brightness(.75);
+}
+
+.fighter.knocked-down::after {
+  content: "STUN";
+  position: absolute;
+  left: 10px;
+  top: -28px;
+  color: #fff08a;
+  font-size: 15px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-shadow: 0 0 4px #000, 0 0 8px #ffb300;
+  animation: stunBlink .8s infinite alternate;
+}
+
+@keyframes stunBlink {
+  from { opacity: .4; }
+  to { opacity: 1; }
+}
+
+
+/* DESTROY */
+
+.destroy-aura {
+  display: none;
+  position: absolute;
+  left: -55px;
+  top: -55px;
+  width: 185px;
+  height: 240px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.fighter.destroy-mode .destroy-aura {
+  display: block;
+}
+
+.aura-core {
+  position: absolute;
+  inset: 10px;
+  border-radius: 50%;
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(255,255,255,.45),
+      rgba(255,130,30,.65) 20%,
+      rgba(255,20,0,.7) 45%,
+      rgba(255,0,0,0) 75%
+    );
+  filter: blur(9px);
+  animation: auraPulse .25s infinite alternate;
+}
+
+.aura-ring {
+  position: absolute;
+  left: 23px;
+  top: 30px;
+  width: 140px;
+  height: 180px;
+  border: 4px solid rgba(255,70,20,.9);
+  border-radius: 50%;
+  box-shadow: 0 0 12px #ff6a1f, 0 0 30px #ff0000;
+}
+
+.ring1 {
+  animation: destroyRing .8s infinite;
+}
+
+.ring2 {
+  animation: destroyRing .8s infinite .4s;
+}
+
+.fighter.destroy-mode .body {
+  background: #f21c23;
+  box-shadow:
+    0 0 8px white,
+    0 0 20px #ff5428,
+    0 0 40px red;
+}
+
+@keyframes auraPulse {
+  from {
+    transform: scale(.9);
+    opacity: .7;
+  }
+
+  to {
+    transform: scale(1.13);
+    opacity: 1;
+  }
+}
+
+@keyframes destroyRing {
+  from {
+    transform: scale(.7);
+    opacity: 1;
+  }
+
+  to {
+    transform: scale(1.45);
+    opacity: 0;
+  }
+}
+
+
+/* ICE */
+
+.ice-shell {
+  display: none;
+}
+
+.fighter.frozen .ice-shell {
+  display: block;
+  position: absolute;
+  left: -9px;
+  top: -12px;
+  width: 90px;
+  height: 170px;
+  z-index: 30;
+  border: 4px solid rgba(175,235,255,.95);
+  border-radius: 38px 38px 20px 20px;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(220,250,255,.72),
+      rgba(52,176,255,.48),
+      rgba(10,92,210,.52)
+    );
+  box-shadow:
+    0 0 12px #d9f9ff,
+    0 0 30px #3fbfff,
+    inset 0 0 20px rgba(255,255,255,.8);
+  pointer-events: none;
+}
+
+
+/* SATO */
+
+.sleep-effect {
+  display: none;
+}
+
+.fighter.sato.sleeping .sleep-effect {
+  display: block;
+  position: absolute;
+  left: 44px;
+  top: -43px;
+  width: 75px;
+  height: 55px;
+  z-index: 30;
+  pointer-events: none;
+}
+
+.sleep-effect span {
+  position: absolute;
+  color: #d7f3ff;
+  font-weight: 900;
+  font-style: italic;
+  text-shadow: 0 0 4px #fff, 0 0 10px #4bbcff;
+  animation: sleepZ 1.5s infinite ease-out;
+}
+
+.sleep-effect span:nth-child(1) {
+  left: 0;
+  bottom: 0;
+  font-size: 17px;
+}
+
+.sleep-effect span:nth-child(2) {
+  left: 20px;
+  bottom: 15px;
+  font-size: 23px;
+  animation-delay: .25s;
+}
+
+.sleep-effect span:nth-child(3) {
+  left: 46px;
+  bottom: 30px;
+  font-size: 30px;
+  animation-delay: .5s;
+}
+
+@keyframes sleepZ {
+  0% {
+    opacity: 0;
+    transform: translateY(8px) scale(.8);
+  }
+
+  30%,
+  75% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-10px) scale(1.08);
+  }
+}
+
+
+/* ABSOLUTE LATE */
+
+.fighter.absolute-late-debuff {
+  filter:
+    sepia(.15)
+    hue-rotate(150deg)
+    saturate(1.25)
+    brightness(1.05);
+}
+
+.fighter.absolute-late-debuff::before {
+  content: "";
+  position: absolute;
+  left: -12px;
+  top: -15px;
+  width: 96px;
+  height: 175px;
+  z-index: 18;
+  border-radius: 35px;
+  background: rgba(85,190,255,.20);
+  box-shadow:
+    0 0 15px rgba(100,210,255,.65),
+    inset 0 0 22px rgba(190,240,255,.45);
+  pointer-events: none;
+  animation: lateDebuffPulse 1.2s infinite alternate;
+}
+
+@keyframes lateDebuffPulse {
+  from { opacity: .55; }
+  to { opacity: 1; }
+}
+
+
+/* BEAMS */
+
+#beamLayer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 14;
+}
+
+.shin-beam {
+  position: absolute;
+  height: 26px;
+  transform-origin: left center;
+  pointer-events: none;
+  z-index: 15;
+  animation: shinBeamFire .42s ease-out forwards;
+}
+
+.shin-beam.reverse {
+  transform-origin: right center;
+}
+
+.shin-beam-core {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 8px;
+  height: 10px;
+  border-radius: 10px;
+  background: white;
+  box-shadow:
+    0 0 4px white,
+    0 0 10px #c9f7ff,
+    0 0 18px #58d7ff,
+    0 0 32px #147dff;
+}
+
+.shin-beam-glow {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 2px;
+  height: 22px;
+  border-radius: 50%;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(76,210,255,0),
+      rgba(76,210,255,.48),
+      rgba(255,255,255,.85),
+      rgba(76,210,255,.48),
+      rgba(76,210,255,0)
+    );
+  filter: blur(5px);
+}
+
+.shin-beam-start {
+  position: absolute;
+  top: -6px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background:
+    radial-gradient(
+      circle,
+      white 0%,
+      #bceeff 25%,
+      #42caff 50%,
+      rgba(20,100,255,0) 75%
+    );
+  box-shadow: 0 0 15px white, 0 0 30px #35c8ff;
+}
+
+.shin-beam:not(.reverse) .shin-beam-start {
+  left: -15px;
+}
+
+.shin-beam.reverse .shin-beam-start {
+  right: -15px;
+}
+
+@keyframes shinBeamFire {
+  0% {
+    opacity: 0;
+    transform: scaleX(.03);
+  }
+
+  12% {
+    opacity: 1;
+  }
+
+  28% {
+    transform: scaleX(1);
+  }
+
+  70% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scaleX(1);
+  }
+}
+
+
+/* 岡崎 極 */
+
+.extreme-beam {
+  position: absolute;
+  height: 150px;
+  pointer-events: none;
+  z-index: 22;
+  transform-origin: left center;
+  animation: extremeBeamFire .75s ease-out forwards;
+}
+
+.extreme-beam.reverse {
+  transform-origin: right center;
+}
+
+.extreme-beam-glow {
+  position: absolute;
+  inset: -25px 0;
+  border-radius: 50%;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(255,0,0,0),
+      rgba(255,0,30,.22),
+      rgba(255,20,40,.7),
+      rgba(255,255,255,.85),
+      rgba(255,20,40,.7),
+      rgba(255,0,30,.22),
+      rgba(255,0,0,0)
+    );
+  filter: blur(15px);
+}
+
+.extreme-beam-outer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 12px;
+  height: 126px;
+  border-radius: 60px;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(120,0,0,.2),
+      #ff1010 15%,
+      #ff3636 35%,
+      #ff9090 48%,
+      #fff 50%,
+      #ff9090 52%,
+      #ff3636 65%,
+      #ff1010 85%,
+      rgba(120,0,0,.2)
+    );
+  box-shadow:
+    0 0 12px #fff,
+    0 0 25px #ff5555,
+    0 0 50px #ff0000,
+    0 0 85px rgba(255,0,0,.9);
+}
+
+.extreme-beam-core {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 52px;
+  height: 46px;
+  border-radius: 30px;
+  background: #fff;
+  box-shadow:
+    0 0 10px white,
+    0 0 22px #ffcccc,
+    0 0 45px #ff2222;
+}
+
+.extreme-beam-start {
+  position: absolute;
+  top: -13px;
+  width: 175px;
+  height: 175px;
+  border-radius: 50%;
+  background:
+    radial-gradient(
+      circle,
+      white 0%,
+      #ffdada 16%,
+      #ff6c6c 34%,
+      #ff1111 55%,
+      rgba(255,0,0,0) 75%
+    );
+  box-shadow: 0 0 30px white, 0 0 60px red;
+}
+
+.extreme-beam:not(.reverse) .extreme-beam-start {
+  left: -80px;
+}
+
+.extreme-beam.reverse .extreme-beam-start {
+  right: -80px;
+}
+
+@keyframes extremeBeamFire {
+  0% {
+    opacity: 0;
+    transform: scaleX(.02) scaleY(.25);
+  }
+
+  12% {
+    opacity: 1;
+  }
+
+  28% {
+    transform: scaleX(1) scaleY(1.08);
+  }
+
+  45% {
+    transform: scaleX(1) scaleY(1);
+  }
+
+  78% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: scaleX(1) scaleY(.88);
+  }
+}
+
+
+/* METEOR */
+
+#meteorLayer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 15;
+}
+
+.blue-meteor {
+  position: absolute;
+  width: 20px;
+  height: 55px;
+  border-radius: 50% 50% 45% 45%;
+  background:
+    radial-gradient(
+      ellipse at 50% 75%,
+      #fff 0%,
+      #aeeaff 25%,
+      #36a9ff 50%,
+      #0759d6 72%,
+      rgba(0,50,255,0) 75%
+    );
+  box-shadow:
+    0 0 10px #fff,
+    0 0 22px #43c7ff,
+    0 0 38px #075cff;
+  transform: rotate(18deg);
+  animation: blueMeteorFall .48s linear forwards;
+}
+
+.blue-meteor::before {
+  content: "";
+  position: absolute;
+  left: 6px;
+  bottom: 35px;
+  width: 8px;
+  height: 95px;
+  background:
+    linear-gradient(
+      to top,
+      rgba(91,210,255,.9),
+      rgba(20,100,255,.4),
+      transparent
+    );
+  filter: blur(4px);
+}
+
+@keyframes blueMeteorFall {
+  from {
+    transform: translateY(-180px) rotate(18deg);
+    opacity: 0;
+  }
+
+  12% {
+    opacity: 1;
+  }
+
+  to {
+    transform: translateY(520px) rotate(18deg);
+    opacity: 1;
+  }
+}
+
+.meteor-impact {
+  position: absolute;
+  width: 130px;
+  height: 45px;
+  border-radius: 50%;
+  background:
+    radial-gradient(
+      ellipse,
+      white 0%,
+      #70d9ff 18%,
+      #087cff 43%,
+      rgba(0,70,255,0) 72%
+    );
+  box-shadow:
+    0 0 25px #5ddcff,
+    0 0 55px #006eff;
+  animation: meteorImpact .45s ease-out forwards;
+}
+
+@keyframes meteorImpact {
+  from {
+    transform: scale(.25);
+    opacity: 1;
+  }
+
+  to {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+
+/* TEXT */
+
+#message {
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  transform: translate(-50%, -50%);
+  z-index: 40;
+  color: white;
+  font-size: 50px;
+  font-weight: 900;
+  font-style: italic;
+  text-align: center;
+  text-shadow: 4px 4px #000;
+}
+
+#hitText {
+  position: absolute;
+  left: 50%;
+  top: 43%;
+  transform: translate(-50%, -50%);
+  z-index: 40;
+  color: white;
+  font-size: 30px;
+  font-weight: 900;
+  text-shadow: 3px 3px #000;
+}
+
+
+/* CONTROLS */
+
+#controls {
+  height: 28vh;
+  min-height: 175px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 28px;
+  background: #0e1015;
+}
+
+#movementControls {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+#controls button {
+  border: 3px solid #d7d7d7;
+  border-radius: 18px;
+  background: #292d34;
+  color: white;
+  font-size: 15px;
+  font-weight: 900;
+  box-shadow: 0 5px #000;
+  touch-action: none;
+}
+
+#controls button:active,
+#controls button.pressed {
+  transform: translateY(4px);
+  box-shadow: 0 1px #000;
+}
+
+.move-button {
+  width: 90px;
+  height: 90px;
+  font-size: 30px !important;
+}
+
+.jump-button {
+  width: 85px;
+  height: 105px;
+  margin-bottom: 17px;
+}
+
+#combatControls {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#combatControls > div {
+  display: flex;
+  gap: 10px;
+}
+
+#combatControls button {
+  width: 105px;
+  height: 72px;
+}
+
+#punch {
+  background: #315da7 !important;
+}
+
+#kick {
+  background: #9d3838 !important;
+}
+
+#guard {
+  background: #3c625d !important;
+}
+
+#special {
+  opacity: .4;
+}
+
+#special.ready {
+  opacity: 1;
+  background: #ae7818 !important;
+  box-shadow: 0 0 20px #ffd34e, 0 5px #000;
+}
+
+#special.extreme-ready {
+  opacity: 1;
+  background: linear-gradient(135deg, #ff168f, #c00043) !important;
+  border-color: #ffb5dd !important;
+  box-shadow:
+    0 0 10px #fff,
+    0 0 25px #ff188d,
+    0 5px #000;
+  animation: extremeButtonPulse .5s infinite alternate;
+}
+
+@keyframes extremeButtonPulse {
+  from { transform: scale(1); }
+  to { transform: scale(1.05); }
+}
+
+
+/* POPUP */
+
+.popup {
+  display: none;
+  position: absolute;
+  inset: 0;
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,.78);
+}
+
+.popup.show {
+  display: flex;
+}
+
+.popup-box {
+  width: min(400px, 75vw);
+  padding: 30px;
+  text-align: center;
+  border: 1px solid #5c6675;
+  border-radius: 8px;
+  background: #161b24;
+  color: white;
+  box-shadow: 0 20px 80px #000;
+}
+
+.popup-box button {
+  width: 180px;
+  height: 50px;
+  margin-top: 12px;
+  border: 0;
+  border-radius: 5px;
+  background: white;
+  color: #111;
+  font-weight: 900;
+}
+
+
+/* DETAIL */
+
+.character-detail-window {
+  position: relative;
+  width: min(480px, 86vw);
+  height: min(500px, 84vh);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid #697587;
+  border-radius: 10px;
+  background: #161b24;
+  color: white;
+  box-shadow: 0 20px 80px #000;
+}
+
+.detail-fixed {
+  flex-shrink: 0;
+  padding: 22px 28px 20px;
+  text-align: center;
+  background: linear-gradient(#202733, #171c25);
+  border-bottom: 1px solid #414b59;
+}
+
+.detail-small {
+  font-size: 9px;
+  letter-spacing: 3px;
+  opacity: .45;
+}
+
+.detail-fixed h2 {
+  margin: 7px 0 17px;
+  font-size: 34px;
+}
+
+.character-stats {
+  display: flex;
+  justify-content: space-around;
+  padding: 13px 0;
+  border-top: 1px solid #4a5360;
+  border-bottom: 1px solid #4a5360;
+}
+
+.character-stats div {
+  width: 33.33%;
+}
+
+.character-stats div + div {
+  border-left: 1px solid #3e4652;
+}
+
+.character-stats span {
+  display: block;
+  font-size: 11px;
+  opacity: .55;
+}
+
+.character-stats strong {
+  display: block;
+  margin-top: 4px;
+  font-size: 28px;
+}
+
+.detail-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+  padding: 18px 25px 28px;
+}
+
+.detail-close-x {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  z-index: 50;
+  width: 42px;
+  height: 42px;
+  border: 1px solid #667181;
+  border-radius: 50%;
+  background: #252b35;
+  color: white;
+  font-size: 29px;
+}
+
+.skill-box,
+.special-detail-box {
+  padding: 16px;
+  text-align: left;
+  border-radius: 6px;
+}
+
+.skill-box {
+  border: 1px solid #4d5868;
+  background: #10151d;
+}
+
+.special-detail-box {
+  margin-top: 14px;
+  border: 1px solid #876f35;
+  background: #1d190e;
+}
+
+.skill-label,
+.special-detail-label {
+  font-size: 9px;
+  letter-spacing: 2px;
+  opacity: .55;
+}
+
+.skill-box h3,
+.special-detail-box h3 {
+  margin: 7px 0;
+  font-size: 22px;
+}
+
+.skill-box p,
+.special-detail-box p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.7;
+  opacity: .8;
+}
+
+
+/* RESULT */
+
+.result-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#resultText {
+  margin-bottom: 20px;
+  font-size: 45px;
+  font-weight: 900;
+  font-style: italic;
+}
+
+#returnHome {
+  background: #363d48;
+  color: white;
+}
