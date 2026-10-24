@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>闘う漢達</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+<div id="game">
+
+  <section id="homeScreen" class="screen active">
+    <div class="home-logo">
+      <div class="logo-small">2D FIGHTING GAME</div>
+      <h1>闘う漢達</h1>
+      <div class="logo-line"></div>
+    </div>
+
+    <div class="main-menu">
+      <button id="homeFight" class="menu-button main">
+        FIGHT
+        <span>対戦する</span>
+      </button>
+
+      <button id="homeFighters" class="menu-button">
+        FIGHTERS
+        <span>キャラクター一覧</span>
+      </button>
+    </div>
+
+    <div class="version">VER. 1.0</div>
+  </section>
+
+
+  <section id="modeScreen" class="screen">
+    <button class="back-button" data-screen="homeScreen">‹ BACK</button>
+
+    <h2 class="screen-title">SELECT MODE</h2>
+    <div class="title-line"></div>
+
+    <div class="mode-container">
+
+      <button id="cpuBattle" class="mode-card">
+        <div class="mode-icon">CPU</div>
+        <div>
+          <strong>CPU BATTLE</strong>
+          <span>CPUと1対1で対戦</span>
+        </div>
+      </button>
+
+      <button id="playerBattle" class="mode-card">
+        <div class="mode-icon">2P</div>
+        <div>
+          <strong>PLAYER BATTLE</strong>
+          <span>2人で対戦</span>
+        </div>
+        <div class="soon">COMING SOON</div>
+      </button>
+
+    </div>
+  </section>
+
+
+  <section id="selectScreen" class="screen">
+
+    <button class="back-button" data-screen="modeScreen">‹ BACK</button>
+
+    <h2 class="screen-title">SELECT FIGHTER</h2>
+    <div class="select-subtitle">YOUR FIGHTER</div>
+    <div class="title-line"></div>
+
+    <div class="fighter-cards">
+
+      <div class="fighter-card player-card selected" data-fighter="kawakami">
+        <div class="portrait kawakami-portrait">
+          <div class="mini-head"></div>
+          <div class="mini-body"></div>
+        </div>
+        <strong class="fighter-card-name">川上</strong>
+        <button class="detail-button" data-detail="kawakami">キャラ詳細</button>
+      </div>
+
+      <div class="fighter-card player-card" data-fighter="okazaki">
+        <div class="portrait okazaki-portrait">
+          <div class="mini-head"></div>
+          <div class="mini-body"></div>
+        </div>
+        <strong class="fighter-card-name">岡崎</strong>
+        <button class="detail-button" data-detail="okazaki">キャラ詳細</button>
+      </div>
+
+      <div class="fighter-card player-card" data-fighter="yamada">
+        <div class="portrait yamada-portrait">
+          <div class="mini-head"></div>
+          <div class="mini-body"></div>
+        </div>
+        <strong class="fighter-card-name">山田</strong>
+        <button class="detail-button" data-detail="yamada">キャラ詳細</button>
+      </div>
+
+      <div class="fighter-card player-card" data-fighter="sakurai">
+        <div class="portrait sakurai-portrait">
+          <div class="mini-head"></div>
+          <div class="mini-body"></div>
+        </div>
+        <strong class="fighter-card-name">櫻井</strong>
+        <button class="detail-button" data-detail="sakurai">キャラ詳細</button>
+      </div>
+
+      <div class="fighter-card player-card" data-fighter="sato">
+        <div class="portrait sato-portrait">
+          <div class="mini-head"></div>
+          <div class="mini-body"></div>
+        </div>
+        <strong class="fighter-card-name">佐藤</strong>
+        <button class="detail-button" data-detail="sato">キャラ詳細</button>
+      </div>
+
+      <div class="fighter-card player-card" data-fighter="tani">
+        <div class="portrait tani-portrait">
+          <div class="mini-head"></div>
+          <div class="mini-body"></div>
+        </div>
+        <strong class="fighter-card-name">谷</strong>
+        <button class="detail-button" data-detail="tani">キャラ詳細</button>
+      </div>
+
+      <!-- 安倍 -->
+      <div class="fighter-card player-card" data-fighter="abe">
+        <div class="portrait abe-portrait">
+          <div class="mini-head"></div>
+          <div class="mini-body"></div>
+        </div>
+        <strong class="fighter-card-name">安倍</strong>
+        <button class="detail-button" data-detail="abe">キャラ詳細</button>
+      </div>
+
+    </div>
+
+    <div id="selectedCharacterText">SELECTED：川上</div>
+    <button id="toCpuSelect" class="next-button">NEXT</button>
+
+  </section>
+
+
+  <section id="cpuSelectScreen" class="screen">
+
+    <button class="back-button" data-screen="selectScreen">‹ BACK</button>
+
+    <h2 class="screen-title">SELECT CPU</h2>
+    <div class="select-subtitle">ENEMY FIGHTER</div>
+    <div class="title-line"></div>
+
+    <div class="fighter-cards">
+
+      <div class="fighter-card cpu-card selected" data-cpu="kawakami">
+        <div class="portrait kawakami-portrait">
+          <div class="mini-head"></div>
+          <div class="mini-body"></div>
+        </div>
+        <strong class="fighter-card-name">川上</strong>
+      </div>
+
+      <div class="fighter-card cpu-card" data-cpu="okazaki">
+        <div class="portrait okazaki-portrait">
+          <div class="mini-head"></div>
+          <div class="mini-body"></div>
+        </div>
+        <strong class="fighter-card-name">岡崎</strong>
+      </div>
+
+      <div class="fighter-card cpu-card" data-cpu="yamada">
+        <div class="portrait yamada-portrait">
+          <div class="mini-head"></div>
+          <div class="mini-body"></div>
+        </div>
+        <strong class="fighter-card-name">山田</strong>
+      </div>
+
+      <div class="fighter-card cpu-card" data-cpu="sakurai">
+        <div class="portrait sakurai-portrait">
+          <div class="mini-head"></div>
+          <div class="mini-body"></div>
+        </div>
+        <strong class="fighter-card-name">櫻井</strong>
+      </div>
+
+      <div class="fighter-card cpu-card" data-cpu="sato">
+        <div class="portrait sato-portrait">
+          <div class="mini-head"></div>
+          <div class="mini-body"></div>
+        </div>
+        <strong class="fighter-card-name">佐藤</strong>
+      </div>
+
+      <div class="fighter-card cpu-card" data-cpu="tani">
+        <div class="portrait tani-portrait">
+          <div class="mini-head"></div>
+          <div class="mini-body"></div>
+        </div>
+        <strong class="fighter-card-name">谷</strong>
+      </div>
+
+      <!-- 安倍 -->
+      <div class="fighter-card cpu-card" data-cpu="abe">
+        <div class="portrait abe-portrait">
+          <div class="mini-head"></div>
+          <div class="mini-body"></div>
+        </div>
+        <strong class="fighter-card-name">安倍</strong>
+      </div>
+
+    </div>
+
+    <div id="selectedCpuText">CPU：川上</div>
+    <button id="toDifficulty" class="next-button">NEXT</button>
+
+  </section>
+
+
+  <section id="difficultyScreen" class="screen">
+
+    <button class="back-button" data-screen="cpuSelectScreen">‹ BACK</button>
+
+    <h2 class="screen-title">CPU LEVEL</h2>
+    <div class="title-line"></div>
+
+    <div id="difficultyCards">
+
+      <button class="difficulty-card selected" data-difficulty="easy">
+        <strong>優</strong>
+        <span>EASY</span>
+        <p>基本は接近してパンチ。今までのCPUに近い。</p>
+      </button>
+
+      <button class="difficulty-card" data-difficulty="normal">
+        <strong>並</strong>
+        <span>NORMAL</span>
+        <p>ガード・キック・SPECIALを使い分ける。</p>
+      </button>
+
+      <button class="difficulty-card" data-difficulty="hard">
+        <strong>強</strong>
+        <span>HARD</span>
+        <p>間合い管理・ガード・回避・SPECIALを積極的に使う。</p>
+      </button>
+
+      <button class="difficulty-card oni" data-difficulty="oni">
+        <strong>鬼</strong>
+        <span>ONI</span>
+        <p>「強」のAIに加えてHP・ATK・SPDすべて+100。</p>
+      </button>
+
+    </div>
+
+    <div id="difficultyText">CPU LEVEL：優</div>
+    <button id="startFight" class="next-button fight-start">FIGHT!</button>
+
+  </section>
+
+
+  <section id="battleScreen" class="screen">
+
+    <div id="hud">
+
+      <div class="fighter-info">
+        <div id="battlePlayerName" class="name">川上</div>
+
+        <div class="hp-frame">
+          <div id="playerHP" class="hp"></div>
+        </div>
+
+        <div class="gauge-frame">
+          <div id="playerGauge" class="gauge"></div>
+        </div>
+
+        <div id="playerExtremeFrame" class="extreme-frame">
+          <div id="playerExtremeGauge" class="extreme-gauge"></div>
+        </div>
+      </div>
+
+
+      <div id="timer">99</div>
+
+
+      <div class="fighter-info enemy-info">
+        <div id="battleEnemyName" class="name">川上 CPU</div>
+
+        <div class="hp-frame">
+          <div id="enemyHP" class="hp"></div>
+        </div>
+
+        <div class="gauge-frame">
+          <div id="enemyGauge" class="gauge"></div>
+        </div>
+
+        <div id="enemyExtremeFrame" class="extreme-frame">
+          <div id="enemyExtremeGauge" class="extreme-gauge"></div>
+        </div>
+      </div>
+
+    </div>
+
+
+    <div id="arena">
+
+      <div id="beamLayer"></div>
+      <div id="meteorLayer"></div>
+
+      <div id="player" class="fighter">
+
+        <div class="destroy-aura">
+          <div class="aura-core"></div>
+          <div class="aura-ring ring1"></div>
+          <div class="aura-ring ring2"></div>
+        </div>
+
+        <div class="ice-shell"></div>
+
+        <!-- 安倍の毒エフェクト -->
+        <div class="poison-effect">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <div class="sleep-effect">
+          <span>z</span>
+          <span>z</span>
+          <span>z</span>
+        </div>
+
+        <div class="head"></div>
+        <div class="body"></div>
+        <div class="arm arm-left"></div>
+        <div class="arm arm-right"></div>
+        <div class="leg leg-left"></div>
+        <div class="leg leg-right"></div>
+
+      </div>
+
+
+      <div id="enemy" class="fighter enemy">
+
+        <div class="destroy-aura">
+          <div class="aura-core"></div>
+          <div class="aura-ring ring1"></div>
+          <div class="aura-ring ring2"></div>
+        </div>
+
+        <div class="ice-shell"></div>
+
+        <!-- 安倍の毒エフェクト -->
+        <div class="poison-effect">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <div class="sleep-effect">
+          <span>z</span>
+          <span>z</span>
+          <span>z</span>
+        </div>
+
+        <div class="head"></div>
+        <div class="body"></div>
+        <div class="arm arm-left"></div>
+        <div class="arm arm-right"></div>
+        <div class="leg leg-left"></div>
+        <div class="leg leg-right"></div>
+
+      </div>
+
+      <div id="message"></div>
+      <div id="hitText"></div>
+
+    </div>
+
+
+    <div id="controls">
+
+      <div id="movementControls">
+        <button id="left" class="move-button">◀</button>
+        <button id="jump" class="jump-button">JUMP</button>
+        <button id="right" class="move-button">▶</button>
+      </div>
+
+      <div id="combatControls">
+
+        <div>
+          <button id="guard">GUARD</button>
+          <button id="special">SPECIAL</button>
+        </div>
+
+        <div>
+          <button id="punch">PUNCH</button>
+          <button id="kick">KICK</button>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <div id="popup" class="popup">
+    <div class="popup-box">
+      <h2 id="popupTitle">COMING SOON</h2>
+      <p id="popupText"></p>
+      <button id="closePopup">OK</button>
+    </div>
+  </div>
+
+
+  <div id="characterDetailPopup" class="popup">
+
+    <div class="character-detail-window">
+
+      <button id="closeCharacterDetail" class="detail-close-x">×</button>
+
+      <div class="detail-fixed">
+
+        <div class="detail-small">FIGHTER PROFILE</div>
+        <h2 id="detailName">川上</h2>
+
+        <div class="character-stats">
+
+          <div>
+            <span>HP</span>
+            <strong id="detailHP">100</strong>
+          </div>
+
+          <div>
+            <span>ATK</span>
+            <strong id="detailATK">80</strong>
+          </div>
+
+          <div>
+            <span>SPD</span>
+            <strong id="detailSPD">60</strong>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="detail-scroll">
+
+        <div class="skill-box">
+          <div class="skill-label">UNIQUE SKILL</div>
+          <h3 id="detailSkill"></h3>
+          <p id="detailSkillDescription"></p>
+        </div>
+
+        <div class="special-detail-box">
+          <div class="special-detail-label">SPECIAL</div>
+          <h3 id="detailSpecial"></h3>
+          <p id="detailSpecialDescription"></p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div id="resultPopup" class="popup">
+
+    <div class="popup-box result-box">
+
+      <div id="resultText">YOU WIN!</div>
+
+      <button id="rematch">REMATCH</button>
+      <button id="returnHome">HOME</button>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script src="./script.js"></script>
+
+</body>
+</html>
